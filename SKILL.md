@@ -11,6 +11,29 @@ Full documentation source: https://finsweet.com/client-first/docs
 
 ---
 
+## 0. Critical Rule: No CSS for Predefined Classes
+
+**NEVER write CSS styles for predefined Client-First classes.** When implementing, only add the class name to the element — do not generate any CSS rules for it. These classes are already defined in the Client-First system/stylesheet within Webflow.
+
+This applies to ALL predefined utility and structural classes, including but not limited to:
+- Core structure: `page-wrapper`, `main-wrapper`, `section_[name]`, `padding-global`, `padding-section-[size]`, `container-[size]`
+- Spacing: `margin-top`, `margin-bottom`, `margin-small`, `margin-large`, `padding-top`, `padding-medium`, `spacer-[size]`, `spacing-clean`, etc.
+- Typography: `heading-style-h1`–`heading-style-h6`, `text-size-[value]`, `text-style-[value]`, `text-weight-[value]`, `text-align-[value]`, `text-color-[value]`
+- Visibility: `hide`, `hide-tablet`, `hide-mobile-landscape`, `hide-mobile-portrait`
+- Layout utilities: `display-inlineflex`, `align-center`, `layer`, `overflow-hidden`, `overflow-scroll`, `overflow-auto`
+- Max width: `max-width-[size]`, `max-width-full`, `max-width-full-tablet`, etc.
+- Icons: `icon-height-[size]`, `icon-1x1-[size]`
+- Aspect ratio: `aspect-ratio-square`, `aspect-ratio-portrait`, `aspect-ratio-landscape`, `aspect-ratio-widescreen`
+- Z-index: `z-index-1`, `z-index-2`
+- Pointer events: `pointer-events-none`, `pointer-events-auto`
+- Colors: `background-color-primary`, `background-color-secondary`, `text-color-primary`, `text-color-secondary`, `inherit-color`, etc.
+- Buttons: `button`, `is-secondary`, `is-text`, `is-primary`, `is-dark`
+- Any combo class prefix: `is-[variant]`
+
+**Only write CSS for custom classes** (classes with `_` that you create for specific components/elements).
+
+---
+
 ## 1. Class Types
 
 ### Utility Classes
