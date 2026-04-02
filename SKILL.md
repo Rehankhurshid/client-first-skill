@@ -32,6 +32,9 @@ This applies to ALL predefined utility and structural classes, including but not
 
 **Only write CSS for custom classes** (classes with `_` that you create for specific components/elements).
 
+### Sections: No Size Styles
+**Never apply size properties (width, height, min-width, min-height, max-width, max-height, or overflow) to `section_[name]` elements.** Sections should have no size styles — their dimensions are controlled entirely by their inner content and the padding/container structure. Leave all size values at their defaults (Width: Auto, Height: Auto, Min W/H: 0, Max W/H: None).
+
 ---
 
 ## 1. Class Types
@@ -188,6 +191,23 @@ client-slider_arrow
 
 **Text color:**
 - `text-color-primary`, `text-color-secondary`, `text-color-alternate`
+
+### Implementation Rule: Match Design Values to Predefined Classes
+When implementing text styles, **always use predefined Client-First typography classes** instead of writing custom CSS. Follow this exact workflow:
+
+1. **Get the actual values from Figma MCP** — read the design to extract concrete values (e.g., font-size: 3rem, font-weight: 700, color: #1a1a1a)
+2. **Fetch variables from Webflow MCP** — query the Webflow project's variables/styles to see all predefined Client-First class values and what they map to
+3. **Match the Figma value to a predefined class** — find which Client-First class holds the matching value (e.g., if `text-size-large` = 3rem in the Webflow variables, use `text-size-large`)
+4. **Apply only the class name** — add the matched predefined class to the element. Do NOT write any custom CSS for that property.
+5. **Cache/reuse the variable lookup** — once you've fetched the Webflow variables, keep referencing that data for subsequent elements in the same implementation session. No need to re-fetch for every element.
+
+**Example workflow:**
+- Figma shows a title with font-size `3rem`, weight `700`, color `#1a1a1a`
+- Fetch Webflow variables → `text-size-large` = 3rem, `text-weight-bold` = 700, `text-color-primary` = #1a1a1a
+- Apply classes: `text-size-large`, `text-weight-bold`, `text-color-primary`
+- Write zero CSS for these properties
+
+This applies to ALL text properties: size, weight, color, alignment, and style. Only write custom CSS when no predefined class matches the design value.
 
 ### When to Use Custom Classes for Text
 - Unique/specific text with many combined styles (e.g., `footer_copyright-text`)
