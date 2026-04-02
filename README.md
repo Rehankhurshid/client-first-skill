@@ -1,8 +1,8 @@
-# Client-First Skill for Claude Code
+# Client-First Skill
 
-A [Claude Code](https://claude.ai/claude-code) skill that gives Claude deep knowledge of the **Finsweet Client-First** methodology for Webflow development.
+A skill for [Claude Code](https://claude.ai/claude-code) and Codex that gives the assistant deep knowledge of the **Finsweet Client-First** methodology for Webflow development.
 
-When installed, Claude automatically applies Client-First conventions when helping you build Webflow sites — class naming, page structure, spacing, typography, folders, variables, interactions, and accessibility.
+When installed, the assistant automatically applies Client-First conventions when helping you build Webflow sites — class naming, page structure, spacing, typography, folders, variables, interactions, and accessibility.
 
 ## What's Covered
 
@@ -26,9 +26,23 @@ When installed, Claude automatically applies Client-First conventions when helpi
 
 ## Install
 
+### Claude Code
+
 ```bash
 claude skill add Rehankhurshid/client-first-skill
 ```
+
+### Codex
+
+```bash
+python3 ~/.codex/skills/.system/skill-installer/scripts/install-skill-from-github.py \
+  --repo Rehankhurshid/client-first-skill \
+  --path . \
+  --name client-first \
+  --method git
+```
+
+Restart Codex after installing so it picks up the new skill.
 
 ## Source
 
